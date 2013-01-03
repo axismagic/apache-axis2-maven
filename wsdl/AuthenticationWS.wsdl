@@ -1,0 +1,278 @@
+<definitions name='AuthenticationWSService' targetNamespace='http://authentication.ws.kf/' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://authentication.ws.kf/' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://authentication.ws.kf/' version='1.0' xmlns:tns='http://authentication.ws.kf/' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='AuthenticationResult' type='tns:authenticationResult'/>
+   <xs:element name='DetailedWebServiceException' nillable='true' type='tns:detailedException'/>
+   <xs:element name='login' type='tns:login'/>
+   <xs:element name='loginResponse' type='tns:loginResponse'/>
+   <xs:element name='logout' type='tns:logout'/>
+   <xs:element name='logoutResponse' type='tns:logoutResponse'/>
+   <xs:element name='resetPassword' type='tns:resetPassword'/>
+   <xs:element name='resetPasswordResponse' type='tns:resetPasswordResponse'/>
+   <xs:element name='sendTempPasswordLinkEmail' type='tns:sendTempPasswordLinkEmail'/>
+   <xs:element name='sendTempPasswordLinkEmailResponse' type='tns:sendTempPasswordLinkEmailResponse'/>
+   <xs:element name='updatePasswordByEmail' type='tns:updatePasswordByEmail'/>
+   <xs:element name='updatePasswordByEmailResponse' type='tns:updatePasswordByEmailResponse'/>
+   <xs:element name='updatePasswordByTmpLink' type='tns:updatePasswordByTmpLink'/>
+   <xs:element name='updatePasswordByTmpLinkResponse' type='tns:updatePasswordByTmpLinkResponse'/>
+   <xs:complexType name='login'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='credentials' type='tns:credentialsDTO'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='credentialsDTO'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='login' type='xs:string'/>
+     <xs:element minOccurs='0' name='password' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='loginResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='AuthenticationResult' type='tns:authenticationResult'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='authenticationResult'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='sessionID' type='xs:string'/>
+     <xs:element name='successful' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='user' type='xs:string'/>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='webServices' nillable='true' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='detailedException'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='errorList'>
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs='unbounded' minOccurs='0' name='error' type='tns:detailedExceptionInfo'/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='detailedExceptionInfo'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='code' type='xs:string'/>
+     <xs:element name='critical' type='xs:boolean'/>
+     <xs:element minOccurs='0' name='message' type='xs:string'/>
+     <xs:element name='params'>
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs='unbounded' minOccurs='0' name='entry'>
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element minOccurs='0' name='key' type='xs:string'/>
+           <xs:element minOccurs='0' name='value' type='xs:string'/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs='0' name='property' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='logout'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='logoutResponse'>
+    <xs:sequence>
+     <xs:element name='return' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='sendTempPasswordLinkEmail'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='email' type='xs:string'/>
+     <xs:element minOccurs='0' name='siteId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='sendTempPasswordLinkEmailResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='resetPassword'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='tempLink' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='resetPasswordResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='updatePasswordByTmpLink'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='tempLink' type='xs:string'/>
+     <xs:element minOccurs='0' name='newPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='confirmNewPassword' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='updatePasswordByTmpLinkResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name='updatePasswordByEmail'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='email' type='xs:string'/>
+     <xs:element minOccurs='0' name='newPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='confirmNewPassword' type='xs:string'/>
+     <xs:element minOccurs='0' name='confirmOldPassword' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='updatePasswordByEmailResponse'>
+    <xs:sequence/>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+ <message name='AuthenticationWS_logout'>
+  <part element='tns:logout' name='logout'></part>
+ </message>
+ <message name='AuthenticationWS_sendTempPasswordLinkEmail'>
+  <part element='tns:sendTempPasswordLinkEmail' name='sendTempPasswordLinkEmail'></part>
+ </message>
+ <message name='AuthenticationWS_updatePasswordByTmpLink'>
+  <part element='tns:updatePasswordByTmpLink' name='updatePasswordByTmpLink'></part>
+ </message>
+ <message name='AuthenticationWS_sendTempPasswordLinkEmailResponse'>
+  <part element='tns:sendTempPasswordLinkEmailResponse' name='sendTempPasswordLinkEmailResponse'></part>
+ </message>
+ <message name='DetailedWebServiceException'>
+  <part element='tns:DetailedWebServiceException' name='DetailedWebServiceException'></part>
+ </message>
+ <message name='AuthenticationWS_updatePasswordByEmail'>
+  <part element='tns:updatePasswordByEmail' name='updatePasswordByEmail'></part>
+ </message>
+ <message name='AuthenticationWS_loginResponse'>
+  <part element='tns:loginResponse' name='loginResponse'></part>
+ </message>
+ <message name='AuthenticationWS_resetPasswordResponse'>
+  <part element='tns:resetPasswordResponse' name='resetPasswordResponse'></part>
+ </message>
+ <message name='AuthenticationWS_resetPassword'>
+  <part element='tns:resetPassword' name='resetPassword'></part>
+ </message>
+ <message name='AuthenticationWS_updatePasswordByTmpLinkResponse'>
+  <part element='tns:updatePasswordByTmpLinkResponse' name='updatePasswordByTmpLinkResponse'></part>
+ </message>
+ <message name='AuthenticationWS_login'>
+  <part element='tns:login' name='login'></part>
+ </message>
+ <message name='AuthenticationWS_logoutResponse'>
+  <part element='tns:logoutResponse' name='logoutResponse'></part>
+ </message>
+ <message name='AuthenticationWS_updatePasswordByEmailResponse'>
+  <part element='tns:updatePasswordByEmailResponse' name='updatePasswordByEmailResponse'></part>
+ </message>
+ <portType name='AuthenticationWS'>
+  <operation name='login' parameterOrder='login'>
+   <input message='tns:AuthenticationWS_login'></input>
+   <output message='tns:AuthenticationWS_loginResponse'></output>
+   <fault message='tns:DetailedWebServiceException' name='DetailedWebServiceException'></fault>
+  </operation>
+  <operation name='logout' parameterOrder='logout'>
+   <input message='tns:AuthenticationWS_logout'></input>
+   <output message='tns:AuthenticationWS_logoutResponse'></output>
+   <fault message='tns:DetailedWebServiceException' name='DetailedWebServiceException'></fault>
+  </operation>
+  <operation name='resetPassword' parameterOrder='resetPassword'>
+   <input message='tns:AuthenticationWS_resetPassword'></input>
+   <output message='tns:AuthenticationWS_resetPasswordResponse'></output>
+   <fault message='tns:DetailedWebServiceException' name='DetailedWebServiceException'></fault>
+  </operation>
+  <operation name='sendTempPasswordLinkEmail' parameterOrder='sendTempPasswordLinkEmail'>
+   <input message='tns:AuthenticationWS_sendTempPasswordLinkEmail'></input>
+   <output message='tns:AuthenticationWS_sendTempPasswordLinkEmailResponse'></output>
+   <fault message='tns:DetailedWebServiceException' name='DetailedWebServiceException'></fault>
+  </operation>
+  <operation name='updatePasswordByEmail' parameterOrder='updatePasswordByEmail'>
+   <input message='tns:AuthenticationWS_updatePasswordByEmail'></input>
+   <output message='tns:AuthenticationWS_updatePasswordByEmailResponse'></output>
+   <fault message='tns:DetailedWebServiceException' name='DetailedWebServiceException'></fault>
+  </operation>
+  <operation name='updatePasswordByTmpLink' parameterOrder='updatePasswordByTmpLink'>
+   <input message='tns:AuthenticationWS_updatePasswordByTmpLink'></input>
+   <output message='tns:AuthenticationWS_updatePasswordByTmpLinkResponse'></output>
+   <fault message='tns:DetailedWebServiceException' name='DetailedWebServiceException'></fault>
+  </operation>
+ </portType>
+ <binding name='AuthenticationWSBinding' type='tns:AuthenticationWS'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='login'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='DetailedWebServiceException'>
+    <soap:fault name='DetailedWebServiceException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='logout'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='DetailedWebServiceException'>
+    <soap:fault name='DetailedWebServiceException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='resetPassword'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='DetailedWebServiceException'>
+    <soap:fault name='DetailedWebServiceException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='sendTempPasswordLinkEmail'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='DetailedWebServiceException'>
+    <soap:fault name='DetailedWebServiceException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='updatePasswordByEmail'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='DetailedWebServiceException'>
+    <soap:fault name='DetailedWebServiceException' use='literal'/>
+   </fault>
+  </operation>
+  <operation name='updatePasswordByTmpLink'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+   <fault name='DetailedWebServiceException'>
+    <soap:fault name='DetailedWebServiceException' use='literal'/>
+   </fault>
+  </operation>
+ </binding>
+ <service name='AuthenticationWSService'>
+  <port binding='tns:AuthenticationWSBinding' name='AuthenticationWSPort'>
+   <soap:address location='http://EPUAKYIW0974:8080/tp-ws/AuthenticationWS'/>
+  </port>
+ </service>
+</definitions>
