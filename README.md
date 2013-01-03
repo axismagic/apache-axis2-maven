@@ -1,4 +1,4 @@
-apache-axis-tutorial
+apache-axis2-tutorial
 ====================
 
-apache-axis tutorial
+apache-axis2 tutorial
