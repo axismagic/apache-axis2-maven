@@ -3,12 +3,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.tutorial</groupId>
-	<artifactId>apache-axis2-tutorial</artifactId>
+	<artifactId>apache-axis2-maven</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<packaging>jar</packaging>
 
-	<name>apache-axis2-tutorial</name>
+	<name>apache-axis2-maven</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -17,8 +17,7 @@
 
 	<repositories>
 		<repository>
-			<id>org.apache.axis2</id>
-			<name>org.apache.axis2</name>
+			<id>apache.repository</id>
 			<url>https://repository.apache.org</url>
 		</repository>
 	</repositories>
