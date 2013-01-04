@@ -2,3 +2,6 @@
 .?*
 !.gitignore
 
+# Generated file
+target/
+
