@@ -1,47 +1,35 @@
 package org;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Properties;
 
-import org.apache.axis2.util.CommandLineOption;
-import org.apache.axis2.util.CommandLineOptionParser;
 import org.apache.axis2.wsdl.WSDL2Code;
-import org.apache.axis2.wsdl.WSDL2Java;
-import org.apache.axis2.wsdl.codegen.CodeGenConfiguration;
-import org.apache.axis2.wsdl.codegen.CodeGenerationEngine;
+import org.apache.log4j.Logger;
 
 public class CodeGenerator {
+
+    /**
+     * 
+     */
+    private static final Logger logger = Logger.getLogger(CodeGenerator.class);
 
     /**
      * @param args
      * @throws Exception
      */
-    public static void main(String[] args) throws Exception {
-        StringBuffer path = new StringBuffer().append(System.getProperty("user.dir")).append(System.getProperty("file.separator"))
-                .append("wsdl").append(System.getProperty("file.separator")).append("AuthenticationWS.wsdl");
+    public static void main(String[] args) {
+        try {
+            StringBuffer stringBuffer = new StringBuffer().append(System.getProperty("user.dir"))
+                    .append(System.getProperty("file.separator")).append("wsdl").append(System.getProperty("file.separator"))
+                    .append("AuthenticationWS.wsdl");
 
-        // Map<String, CommandLineOption> commandLineOptions = new
-        // HashMap<String, CommandLineOption>();
-        //
-        // CommandLineOption commandLineOption = ;
-        //
-        // commandLineOptions.put("uri", path.toString());
-        // commandLineOptions.put("l", "java");
-        // commandLineOptions.put("g", "");
-        // commandLineOptions.put("or", "");
-        // commandLineOptions.put("ss", "");
-        //
-        // CommandLineOptionParser commandLineOptionParser = new
-        // CommandLineOptionParser(commandLineOptions);
-        // CodeGenerationEngine codeGenerationEngine = new
-        // CodeGenerationEngine(commandLineOptionParser);
-        //
-        // codeGenerationEngine.generate();
+            Properties properties = Utils.getProperites();
 
-        WSDL2Code.main(new String[] { "-uri", path.toString(), "-l", "java" });
+            WSDL2Code.main(new String[] { "-uri", stringBuffer.toString(), "-l", "java", "-S",
+                    properties.getProperty(Constants.WSDL_CLASSES_LOCATION), "-ss", "-g", "-u", "-ssi", "-ap", "-or", "--noWSDL",
+                    "--noBuildXML" });
 
-        WSDL2Code.main(new String[] { "X", "Y" });
+        } catch (Exception e) {
+            logger.fatal(e);
+        }
     }
-
 }
