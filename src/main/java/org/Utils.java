@@ -24,6 +24,17 @@ public class Utils {
 
     /**
      * 
+     * @param propertiesClazz
+     * @param properties
+     * @return
+     */
+    public static boolean validateProperties(Class<?> propertiesClazz, Properties properties) {
+
+        return false;
+    }
+
+    /**
+     * 
      * @return
      * @throws IOException
      */
@@ -72,7 +83,7 @@ public class Utils {
     private static Properties getProperitesUsingUserDir() throws IOException {
         final Properties properties = new Properties();
         final StringBuffer stringBuffer = new StringBuffer().append(System.getProperty("user.dir"))
-                .append(System.getProperty("file.separator")).append(Constants.PROPERTIES_FILE_NAME);
+                .append(System.getProperty("file.separator")).append(ConstantsGlobal.PROPERTIES_FILE_NAME);
 
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
@@ -119,7 +130,7 @@ public class Utils {
         try {
             ClassLoader.getSystemClassLoader();
 
-            inputStream = Utils.class.getClass().getResourceAsStream("/" + Constants.PROPERTIES_FILE_NAME);
+            inputStream = Utils.class.getClass().getResourceAsStream("/" + ConstantsGlobal.PROPERTIES_FILE_NAME);
 
             properties.load(inputStream);
         } catch (IOException ioe) {

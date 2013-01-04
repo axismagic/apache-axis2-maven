@@ -25,8 +25,8 @@ public class CodeGenerator {
             Properties properties = Utils.getProperites();
 
             WSDL2Code.main(new String[] { "-uri", stringBuffer.toString(), "-l", "java", "-S",
-                    properties.getProperty(Constants.WSDL_CLASSES_LOCATION), "-ss", "-g", "-u", "-ssi", "-ap", "-or", "--noWSDL",
-                    "--noBuildXML" });
+                    properties.getProperty(ConstantsProperty.PROPERTY_WSDL_SOURCE_CLASSES_FOLDER), "-b", "-ss", "-g", "-u", "-ssi", "-ap",
+                    "-or", "--noWSDL", "--noBuildXML" });
 
         } catch (Exception e) {
             logger.fatal(e);

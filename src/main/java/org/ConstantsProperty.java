@@ -5,13 +5,10 @@ package org;
  * @author oleksandr_kyetov
  * 
  */
-public class Constants {
-
-    // File names
-    public static final String PROPERTIES_FILE_NAME = "file.properties";
+public class ConstantsProperty {
 
     // Global properties
-    public static final String WSDL_CLASSES_LOCATION = "wsdl.classes.location";
+    public static final String PROPERTY_WSDL_SOURCE_CLASSES_FOLDER = "wsdl.source.classes.folder";
 
     // Call center properties constants
     public static final String PROPERTY_CALL_CENTER_PROTOCOL = "call.center.protocol";
