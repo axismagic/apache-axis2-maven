@@ -20,12 +20,12 @@ public class ConstantsProperty {
     public static final String PROPERTY_CALL_CENTER_PASSWORD = "call.center.password";
 
     // Web center properties constants
-    public static final String PROPERTY_WEB_PROTOCOL = "";
-    public static final String PROPERTY_WEB_SERVER_ADDRESS = "";
-    public static final String PROPERTY_WEB_SERVER_PORT = "";
-    public static final String PROPERTY_WEB_POINT = "";
-    public static final String PROPERTY_WEB_AUTHENTICATION_WSDL = "";
-    public static final String PROPERTY_WEB_LOGIN = "";
-    public static final String PROPERTY_WEB_PASSWORD = "";
+    public static final String PROPERTY_WEB_AUTHENTICATION_WSDL = "web.authentication.wsdl";
+    public static final String PROPERTY_WEB_PROTOCOL = "web.protocol";
+    public static final String PROPERTY_WEB_SERVER_ADDRESS = "web.server.address";
+    public static final String PROPERTY_WEB_SERVER_PORT = "web.server.port";
+    public static final String PROPERTY_WEB_POINT = "web.point";
+    public static final String PROPERTY_WEB_LOGIN = "web.login";
+    public static final String PROPERTY_WEB_PASSWORD = "web.password";
 
 }
