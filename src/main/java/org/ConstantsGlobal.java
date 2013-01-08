@@ -8,6 +8,6 @@ package org;
 public class ConstantsGlobal {
 
     // File names
-    public static final String PROPERTIES_FILE_NAME = "file.properties";
+    public static final String PROPERTIES_FILE_NAME = "project.properties";
 
 }
