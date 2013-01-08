@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -23,15 +26,30 @@ public class Utils {
     private static final Logger logger = Logger.getLogger(Utils.class);
 
     /**
-     * TODO
+     * Validate properties
      * 
      * @param propertiesClazz
      * @param properties
-     * @return
+     * @return Map with invalid properties
      */
-    public static boolean validateProperties(Class<?> propertiesClazz, Properties properties) {
+    public static Map<String, String> validateProperties(final Class<?> propertiesClazz, final Properties properties) {
+        Field[] fields = propertiesClazz.getDeclaredFields();
+        Map<String, String> validatedProperties = new HashMap<String, String>();
 
-        return false;
+        try {
+            for (Field field : fields) {
+                if (properties.getProperty(String.valueOf(field.get(propertiesClazz))) == null
+                        || "".equals(properties.getProperty(String.valueOf(field.get(propertiesClazz))))) {
+                    validatedProperties.put(field.getName(), String.valueOf(field.get(propertiesClazz)));
+                }
+            }
+        } catch (IllegalArgumentException iare) {
+            logger.error(iare);
+        } catch (IllegalAccessException iace) {
+            logger.error(iace);
+        }
+
+        return validatedProperties;
     }
 
     /**

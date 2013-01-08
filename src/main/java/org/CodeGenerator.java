@@ -32,17 +32,8 @@ public class CodeGenerator {
                     .append(properties.getProperty(ConstantsProperty.PROPERTY_CALL_CENTER_AUTHENTICATION_WSDL)).append("?wsdl");
 
             /*
-             * Used options: -uri <url or path> : A url or path to a WSDL -l
-             * <language> Valid languages are java and c -S <path> Specify a
-             * directory path for generated source -b Generate Axis 1.x backward
-             * compatible code -ss Generate server side code (i.e. skeletons)
-             * -sd Generate service descriptor (i.e. services.xml) -d
-             * <databinding> Valid databinding(s) are adb, xmlbeans, jibx and
-             * jaxbri -g Generates all the classes -u Unpacks the databinding
-             * classes -ssi Generate an interface for the service implementation
-             * -ap Generate code for all ports -or Overwrite the existing
-             * classes --noBuildXML Dont generate the build.xml in the output
-             * directory --noWSDL Dont generate WSDLs in the resources directory
+             * For details execute as WSDL2Code.main(new String[] { "" } ); and
+             * see usage details
              */
             WSDL2Code.main(new String[] { "-uri", wsdlPath.toString(), "-l", "java", "-S",
                     properties.getProperty(ConstantsProperty.PROPERTY_WSDL_SOURCE_CLASSES_FOLDER), "-ss", "-ssi", "-g", "-u", "-or",
