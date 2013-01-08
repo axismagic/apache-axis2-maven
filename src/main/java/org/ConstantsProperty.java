@@ -20,7 +20,7 @@ public class ConstantsProperty {
     public static final String PROPERTY_CALL_CENTER_PASSWORD = "call.center.password";
 
     // Web center properties constants
-    public static final String PROPERTY_WEB_CENTER_PROTOCOL = "";
+    public static final String PROPERTY_WEB_PROTOCOL = "";
     public static final String PROPERTY_WEB_SERVER_ADDRESS = "";
     public static final String PROPERTY_WEB_SERVER_PORT = "";
     public static final String PROPERTY_WEB_POINT = "";
